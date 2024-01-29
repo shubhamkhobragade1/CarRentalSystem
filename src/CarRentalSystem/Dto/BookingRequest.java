@@ -8,6 +8,16 @@ public class BookingRequest {
 
     private int vehicleId;
 
+    private int intialPaidAmount;
+
+    public int getIntialPaidAmount() {
+        return intialPaidAmount;
+    }
+
+    public void setIntialPaidAmount(int intialPaidAmount) {
+        this.intialPaidAmount = intialPaidAmount;
+    }
+
     public int getLicenseNum() {
         return LicenseNum;
     }

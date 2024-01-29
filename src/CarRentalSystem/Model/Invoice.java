@@ -8,9 +8,10 @@ public class Invoice extends BaseModel{
     private PaymentStatus paymentStatus;
     private int paymentRefNumber;
     private Date dateOfBooking;
+    private Date dateOfPayment;
     private Date returnDate;
 
-    private Long paidAmount;
+    private double paidAmount;
 
     private String customerName;
 
@@ -46,11 +47,19 @@ public class Invoice extends BaseModel{
         this.returnDate = returnDate;
     }
 
-    public Long getPaidAmount() {
+    public double getPaidAmount() {
         return paidAmount;
     }
 
-    public void setPaidAmount(Long paidAmount) {
+    public Date getDateOfPayment() {
+        return dateOfPayment;
+    }
+
+    public void setDateOfPayment(Date dateOfPayment) {
+        this.dateOfPayment = dateOfPayment;
+    }
+
+    public void setPaidAmount(double paidAmount) {
         this.paidAmount = paidAmount;
     }
 

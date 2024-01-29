@@ -17,7 +17,7 @@ public class BookingController {
 
 
 
-        BookingResponse response=bookingService.bookingCar(request.getCustomerId(),request.getLicenseNum(),request.getVehicleId());
+        BookingResponse response=bookingService.bookingCar(request.getIntialPaidAmount(),request.getCustomerId(),request.getLicenseNum(),request.getVehicleId());
 
 
         return response;
