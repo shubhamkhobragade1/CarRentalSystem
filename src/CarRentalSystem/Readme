@@ -1,0 +1,8 @@
+payment- while return+extra charge+security amount
+user- id,type-customer,admin,owner,stasu_journey
+enum-
+vehicle- id,type, number, owner_name
+enum- hassback,sub,sidan
+invoice - payment ref no,cust name,id , no of day, payment
+status, paid amount
+paymentStatus- pending,paid,partiallyPaid
