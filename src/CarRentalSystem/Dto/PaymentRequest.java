@@ -1,8 +1,6 @@
 package CarRentalSystem.Dto;
 
-import CarRentalSystem.PriceCalculatingStratergy.StratergyType;
-
-import javax.xml.crypto.Data;
+import CarRentalSystem.DesingPatterns.StratergyType;
 
 public class PaymentRequest {
     public StratergyType getStratergyType() {
@@ -15,9 +13,21 @@ public class PaymentRequest {
 
     private int bookingId;
     private StratergyType stratergyType;
+
+    private int accountNum ;
+
+    public int getAccountNum() {
+        return accountNum;
+    }
+
+    public void setAccountNum(int accountNum) {
+        this.accountNum = accountNum;
+    }
+
     public int getBookingId() {
         return bookingId;
     }
+
 
     public void setBookingId(int bookingId) {
         this.bookingId = bookingId;

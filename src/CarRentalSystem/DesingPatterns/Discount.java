@@ -1,4 +1,4 @@
-package CarRentalSystem.PriceCalculatingStratergy;
+package CarRentalSystem.DesingPatterns;
 
 import CarRentalSystem.Model.VehicleType;
 

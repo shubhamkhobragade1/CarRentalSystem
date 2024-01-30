@@ -5,7 +5,7 @@ import CarRentalSystem.Dao.UserDao;
 import CarRentalSystem.Dao.VehicleDao;
 import CarRentalSystem.Dto.PaymentResponse;
 import CarRentalSystem.Model.*;
-import CarRentalSystem.PriceCalculatingStratergy.*;
+import CarRentalSystem.DesingPatterns.*;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ public class PaymentService {
         this.vehicleDao=vehicleDao;
     }
 
-    public PaymentResponse pay(int bookingId, StratergyType stratergyType) {
+    public PaymentResponse pay(int bookingId, StratergyType stratergyType, int accountNum) {
 
         BookingTransaction bookingTransaction=bookingTransactionDao.getBookedTransactionById(bookingId);
         Vehicle vehicle=vehicleDao.getVehicleById(bookingTransaction.getVehicleId());
@@ -28,12 +28,16 @@ public class PaymentService {
 
         PriceStrategyInterface priceCalculator= Factory.getStrategy(stratergyType);
 
-
 //        int dayDiff=(int) bookingTransaction.getBookedDate().getTime()-new Date().getTime();
         int dayDiff = (int) (bookingTransaction.getBookedDate().getTime() - new Date().getTime());
-
-
         double paidAmount=priceCalculator.getAmount(dayDiff,vehicle.getVehicleType());
+
+        PaymentResponse response=new PaymentResponse();
+        PaymentStatus paymentStatus=PaymentAdapter.pay(accountNum,paidAmount);
+        if(paymentStatus.equals(PaymentStatus.UNPAID)){
+            response.setPaymentStatus(PaymentStatus.UNPAID);
+            return response;
+        }
 
         Invoice invoice=new Invoice();
         invoice.setCustomerName(customer.getName());
@@ -41,8 +45,7 @@ public class PaymentService {
         invoice.setDateOfBooking(bookingTransaction.getBookedDate());
         invoice.setDateOfPayment(new Date());
 
-
-        PaymentResponse response=new PaymentResponse();
+        response.setInvoice(invoice);
         response.setPaymentStatus(PaymentStatus.PAID);
         return response;
     }

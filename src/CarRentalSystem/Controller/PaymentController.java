@@ -15,7 +15,7 @@ public class PaymentController {
 
     public PaymentResponse pay(PaymentRequest request){
 
-        PaymentResponse response=paymentService.pay(request.getBookingId(),request.getStratergyType());
+        PaymentResponse response=paymentService.pay(request.getBookingId(),request.getStratergyType(),request.getAccountNum());
 
         return response;
     }
