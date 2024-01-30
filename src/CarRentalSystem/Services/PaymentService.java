@@ -5,10 +5,7 @@ import CarRentalSystem.Dao.UserDao;
 import CarRentalSystem.Dao.VehicleDao;
 import CarRentalSystem.Dto.PaymentResponse;
 import CarRentalSystem.Model.*;
-import CarRentalSystem.PriceCalculatingStratergy.Discount;
-import CarRentalSystem.PriceCalculatingStratergy.PriceStrategyInterface;
-import CarRentalSystem.PriceCalculatingStratergy.StratergyType;
-import CarRentalSystem.PriceCalculatingStratergy.WithoutDiscount;
+import CarRentalSystem.PriceCalculatingStratergy.*;
 
 import java.util.Date;
 
@@ -29,14 +26,8 @@ public class PaymentService {
         Vehicle vehicle=vehicleDao.getVehicleById(bookingTransaction.getVehicleId());
         User customer=userDao.getUserById(bookingTransaction.getCustomerId());
 
-        PriceStrategyInterface priceCalculator=null;
+        PriceStrategyInterface priceCalculator= Factory.getStrategy(stratergyType);
 
-        if (stratergyType==StratergyType.DISCOUNT){
-            priceCalculator=new Discount();
-        }
-        else{
-            priceCalculator=new WithoutDiscount();
-        }
 
 //        int dayDiff=(int) bookingTransaction.getBookedDate().getTime()-new Date().getTime();
         int dayDiff = (int) (bookingTransaction.getBookedDate().getTime() - new Date().getTime());

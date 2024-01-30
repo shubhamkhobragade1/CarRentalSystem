@@ -5,10 +5,7 @@ import CarRentalSystem.Dao.UserDao;
 import CarRentalSystem.Dao.VehicleDao;
 import CarRentalSystem.Dto.BookingResponse;
 import CarRentalSystem.Dto.BookingStatus;
-import CarRentalSystem.Model.BookingTransaction;
-import CarRentalSystem.Model.PaymentStatus;
-import CarRentalSystem.Model.User;
-import CarRentalSystem.Model.Vehicle;
+import CarRentalSystem.Model.*;
 
 import java.util.Date;
 
@@ -35,6 +32,7 @@ public class BookingService {
         bookingTransaction.setCustomerId(customerId);
         bookingTransaction.setVehicleId(vehicleId);
         bookingTransaction.setPaymentStatus(PaymentStatus.PARTIALLY_PAID);
+        bookingTransaction.setTransactionStatus(TransactionStatus.IN_PROGRESS);
 
         BookingStatus status=bookingTransactionDao.save(bookingTransaction);
 

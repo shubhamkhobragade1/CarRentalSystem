@@ -10,7 +10,7 @@ public class BookingTransaction extends BaseModel {
 
     private PaymentStatus PaymentStatus;
     private int PaidAmount;
-
+    private TransactionStatus transactionStatus;
     private Date bookedDate;
 
     public int getCustomerId() {
@@ -51,5 +51,13 @@ public class BookingTransaction extends BaseModel {
 
     public void setBookedDate(Date bookedDate) {
         this.bookedDate = bookedDate;
+    }
+
+    public TransactionStatus getTransactionStatus() {
+        return transactionStatus;
+    }
+
+    public void setTransactionStatus(TransactionStatus transactionStatus) {
+        this.transactionStatus = transactionStatus;
     }
 }
