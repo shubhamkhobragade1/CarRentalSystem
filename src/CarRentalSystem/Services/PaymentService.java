@@ -33,7 +33,7 @@ public class PaymentService {
         double paidAmount=priceCalculator.getAmount(dayDiff,vehicle.getVehicleType());
 
         PaymentResponse response=new PaymentResponse();
-        PaymentStatus paymentStatus=PaymentAdapter.pay(accountNum,paidAmount);
+        PaymentStatus paymentStatus= AxisBankAdapter.pay(accountNum,paidAmount);
         if(paymentStatus.equals(PaymentStatus.UNPAID)){
             response.setPaymentStatus(PaymentStatus.UNPAID);
             return response;

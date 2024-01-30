@@ -2,9 +2,9 @@ package CarRentalSystem.DesingPatterns;
 
 import CarRentalSystem.Model.PaymentStatus;
 
-public class PaymentAdapter {
+public class AxisBankAdapter {
 
-    Object externalApi=null;
+    Object AxisBankApi=null;
 
 
     public static PaymentStatus pay(int accountNum,double Amount){
